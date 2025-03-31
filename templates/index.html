@@ -1,4 +1,4 @@
-
+{% load form_filters %}
 <html class="">
               
 <head>
@@ -325,6 +325,25 @@
   </script>
 
 </head>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const url = new URL(window.location.href);
+    const hash = url.hash;
+    const params = new URLSearchParams(url.search);
+
+    if (hash === "#booking") {
+      const bookingSection = document.querySelector("#booking");
+      if (bookingSection) {
+        bookingSection.scrollIntoView({ behavior: "smooth" });
+      }
+
+      const servicioSelect = document.querySelector('select[name="servicio"]');
+      if (servicioSelect && params.get("servicio")) {
+        servicioSelect.value = params.get("servicio");
+      }
+    }
+  });
+</script>
 
               <body class="h-full text-base-content">
                 <div class="min-h-screen bg-[#F5F5DC]">
@@ -353,33 +372,34 @@
         <!-- Services Navigation -->
         <section id="services-nav" class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <!-- Emmi Brow Design Card -->
-            <div id="brow-design-card" class="group relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/60"></div>
-                <img class="w-full h-[300px] object-cover transition-transform group-hover:scale-105" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/d0a1056f96-bef463bec6f7abdc87fd.png" alt="elegant spa interior with pink accents, soft lighting, minimalist design" >
-                <div class="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 class="text-2xl text-white mb-2">Emmi Brow Design</h3>
-                    <p class="text-white/90 mb-4">Diseño y cuidado experto para tus cejas</p>
-                    <a href="#booking" class="bg-[#A7D2CB] text-gray-800 px-8 py-3 rounded-lg hover:bg-[#F2D388] transition duration-300 inline-block">
-                      Agendar cita
-                  </a>
-                      
-                </div>
-            </div>
+<div id="brow-design-card" class="group relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/60"></div>
+  <img class="w-full h-[300px] object-cover transition-transform group-hover:scale-105"
+       src="https://storage.googleapis.com/uxpilot-auth.appspot.com/d0a1056f96-bef463bec6f7abdc87fd.png"
+       alt="elegant spa interior with pink accents, soft lighting, minimalist design">
+  <div class="absolute bottom-0 left-0 right-0 p-6">
+      <h3 class="text-2xl text-white mb-2">Emmi Brow Design</h3>
+      <p class="text-white/90 mb-4">Diseño y cuidado experto para tus cejas</p>
+      <a href="{% url 'brow_design' %}" class="bg-[#A7D2CB] text-gray-800 px-8 py-3 rounded-lg hover:bg-[#F2D388] transition duration-300 inline-block">
+          Agendar cita
+      </a>
+  </div>
+</div>
 
-            <!-- Emmi Wellness Card -->
-            <div id="wellness-card" class="group relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/60"></div>
-                <img class="w-full h-[300px] object-cover transition-transform group-hover:scale-105" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/815e226a62-8e9cf47b7abebbbc76b7.png" alt="tranquil wellness spa room with mint green accents, bamboo elements" >
-                <div class="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 class="text-2xl text-white mb-2">Emmi Wellness Therapies</h3>
-                    <p class="text-white/90 mb-4">Terapias holísticas para tu bienestar</p>
-                    <a href="{% url 'barrasa' %}">
-                    <button class="bg-[#98FF98] hover:bg-[#98FF98]/90 text-gray-800 px-6 py-3 rounded-lg shadow-lg backdrop-blur-sm">
-                        Descubrir Terapias
-                    </button>
-                  </a>gi
-                </div>
-            </div>
+<!-- Emmi Wellness Card -->
+<div id="wellness-card" class="group relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/60"></div>
+  <img class="w-full h-[300px] object-cover transition-transform group-hover:scale-105"
+       src="https://storage.googleapis.com/uxpilot-auth.appspot.com/815e226a62-8e9cf47b7abebbbc76b7.png"
+       alt="tranquil wellness spa room with mint green accents, bamboo elements">
+  <div class="absolute bottom-0 left-0 right-0 p-6">
+      <h3 class="text-2xl text-white mb-2">Emmi Wellness Therapies</h3>
+      <p class="text-white/90 mb-4">Terapias holísticas para tu bienestar</p>
+      <a href="{% url 'wellness' %}" class="bg-[#98FF98] hover:bg-[#98FF98]/90 text-gray-800 px-6 py-3 rounded-lg shadow-lg backdrop-blur-sm inline-block">
+          Descubrir Terapias
+      </a>
+  </div>
+</div>
         </section>
 
         <!-- Features Section -->

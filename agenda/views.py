@@ -1,22 +1,30 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import AgendaForm
 
-def home(request):
+def barrasa(request):
+    return render(request, 'barrasa.html')
+
+def beauty(request):
+    return render(request, 'beauty.html')
+
+def gracias(request):
+    return render(request, 'gracias.html')
+
+def index(request):
+    initial_data = {}
+    servicio_preseleccionado = request.GET.get('servicio')
+    if servicio_preseleccionado:
+        initial_data['servicio'] = servicio_preseleccionado
+    
+    form = AgendaForm(initial=initial_data)
+
+
     if request.method == 'POST':
         form = AgendaForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'gracias.html')
-        else:
-            return render(request, 'index.html', {'form': form})
-    else:
-        form = AgendaForm()
-        return render(request, 'index.html', {'form': form})
+            return redirect('gracias')  # asegúrate que esta vista está definida en tus URLs
+        
+    
 
-# ⬇️ Esta es la que falta probablemente:
-def agenda_form(request):
-    form = AgendaForm()
-    return render(request, 'agenda/agenda_form.html', {'form': form})
-
-def barrasa(request):
-    return render(request, 'barrasa.html')
+    return render(request, 'index.html', {'form': form})
