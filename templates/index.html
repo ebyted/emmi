@@ -338,7 +338,7 @@
             <nav class="flex gap-6">
                 <span  class="text-gray-600 hover:text-[#FFB6C1] cursor-pointer">Inicio</span>
                 <span  class="text-gray-600 hover:text-[#FFB6C1] cursor-pointer">Contacto</span>
-                <span  class="text-gray-600 hover:text-[#FFB6C1] cursor-pointer">Reservar</span>
+                <a href="#booking" class="text-gray-600 hover:text-[#FFB6C1]">Reservar</a>
             </nav>
         </div>
     </header>
@@ -359,11 +359,9 @@
                 <div class="absolute bottom-0 left-0 right-0 p-6">
                     <h3 class="text-2xl text-white mb-2">Emmi Brow Design</h3>
                     <p class="text-white/90 mb-4">Diseño y cuidado experto para tus cejas</p>
-                    <a href="{{ url_for('beauty') }}">
-                        <button class="bg-[#FFB6C1] hover:bg-[#FFB6C1]/90 text-white px-6 py-3 rounded-lg shadow-lg backdrop-blur-sm transition-all duration-300">
-                          Explorar Servicios
-                        </button>
-                      </a>
+                    <a href="#booking" class="bg-[#A7D2CB] text-gray-800 px-8 py-3 rounded-lg hover:bg-[#F2D388] transition duration-300 inline-block">
+                      Agendar cita
+                  </a>
                       
                 </div>
             </div>
@@ -408,6 +406,41 @@
                 <p class="text-gray-600">Productos y servicios de alta calidad</p>
             </div>
         </section>
+        {% load form_filters %}
+
+<section id="booking" class="py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-[#9B8BB4] mb-12">Agenda tu Cita</h2>
+    <div class="max-w-xl mx-auto bg-[#F5F5DC] p-8 rounded-xl shadow-lg">
+      <form method="post" class="space-y-6">
+        {% csrf_token %}
+        <div>
+          {{ form.nombre.label_tag }}
+          {{ form.nombre|add_class:"w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#A7D2CB]" }}
+        </div>
+        <div>
+          {{ form.email.label_tag }}
+          {{ form.email|add_class:"w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#A7D2CB]" }}
+        </div>
+        <div>
+          {{ form.telefono.label_tag }}
+          {{ form.telefono|add_class:"w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#A7D2CB]" }}
+        </div>
+        <div>
+          {{ form.servicio.label_tag }}
+          {{ form.servicio|add_class:"w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#A7D2CB]" }}
+        </div>
+        <div>
+          {{ form.mensaje.label_tag }}
+          {{ form.mensaje|add_class:"w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#A7D2CB]" }}
+        </div>
+        <button type="submit" class="w-full bg-[#FFB6C1] hover:bg-[#FADADD] text-gray-800 py-3 rounded-lg transition duration-300">
+          Reservar Cita
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
     </main>
 
     <!-- Footer -->
