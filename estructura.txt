@@ -1,3 +1,4 @@
+    COMMIT_EDITMSG
     config
     description
     HEAD
@@ -20,19 +21,100 @@
       HEAD
             agenda-form-django
           main
+              agenda-form-django
             HEAD
+        b57081ac4dc63ccaccc3408054e47c5bd4962d
+        bda9da7a5f434bf9c6ce10a21dc1e84f028d80
+        1e5e1f75d8875b40098fdeadc2f3dddfcef776
+        6e082eeeffecbe853443eff7d9600d67fd65d6
+        87ca5b665c5184aa48eb43ebbccb9befbdfaf8
+        8eaeb1b0419491a66dc9369ab3b1887156ca85
+        a1d546cd7c6d00df3bb799f1251929ee378b5b
+        efdce579108ebde9b249ab7da5a9e3ce2ca0b9
+        965a8f2b5b02b82c76638054215bb2dec01dce
+        e1fae3838d62271b327434b8eb529a74e1771d
+        bc8c3bb46cd7dbd7c69c5648a863e4480de38b
+        2690b60e7734613af5def3a12fe99dc28eaf73
+        8946bbd96d91d8ad52b789d9c7cbcc49f7118a
+        24085f58da39115961e97f6f50a6f204bcc720
+        e503c2dd97ba78597f6ff6e4393132753573f6
+        080af3ab529814d096e748f1c2c5e68b6543d9
+        aaca155e611b07b1fa479a1a6eeb6f46ec3134
+        443118b174c462408d3b0665eb70516990d480
+        7724e0b4c922ceccaa276e079d41615963850b
+        b5af84a880205d5209493bda271d6830cdc024
+        38f3f3dad51e4585f3984282c2a4bec5349c1e
+        4199ea5a902be3a1952c4c1ffec123ebf8bc80
+        ab1f0caa3f9439475f66f441adaa7ee5d0633c
+        224908ca527c3f957673f33c65367dd35620d4
+        f684b8a9f13f268dc277378579e447a0188a5d
+        1a5029ebb9dc21b82cd4a2d645af6bd11e881c
+        713b73473747970b1d467dc40e399be142e2c5
+        196461eea31080fe2794226ca77596d968982c
+        750d2d2845cd12d7ab164b852e09573a024eed
+        a0d05d87dd7c04e2e4b8a02e0d3eadeffdfff5
+        d98d3c6c523a915dfd3793359113ea1d324825
+        5d3fb09d917025c2420edf1af3e684ba9dbecd
+        016afe59b21c13ea9fcd8fbe56d1dd733115d6
+        728f8df90d0b637c1bbf859c44e68f0b5ca7a7
+        71c1fbf4b8077720d0f78bcd6054035e9c9b4d
+        904db7926ccbeac3387f910b4233ea5dcc6054
+        6431e2c0b15d12a46e1e435facbc8484b6f0ac
+        01e6acff07411d7b70b40808d72e64f55d2fd6
+        4af17b9208a4c8f6a1ee49d3bb9172a86b23b7
+        46c2f3830303e94fa3786a46df3c798e9a450d
+        78e96ffa50a5916aa40589792158476084c30c
+        7c7b5147e6d4f4c3a99b08063fa136c59ee0f5
+        8757bf990a0a19d54d5d849719e7cb077f0f85
+        9ecd36a67103c459440f756fc84f5d273ad6f9
+        8be0040b3a32d9f7959692bb3bced85d0d8c7f
         pack-25f9f25b8c48918bfd70def4b61b63070d8a55da.idx
         pack-25f9f25b8c48918bfd70def4b61b63070d8a55da.pack
         pack-25f9f25b8c48918bfd70def4b61b63070d8a55da.rev
     packed-refs
           agenda-form-django
         main
+            agenda-form-django
           HEAD
+    admin.py
+    apps.py
+    forms.py
+      0001_initial.py
+      __init__.py
+        0001_initial.cpython-312.pyc
+        __init__.cpython-312.pyc
+    models.py
+      form_filters.py
+        form_filters.cpython-312.pyc
+    tests.py
+    urls.py
+    views.py
+    __init__.py
+      admin.cpython-312.pyc
+      apps.cpython-312.pyc
+      forms.cpython-312.pyc
+      models.cpython-312.pyc
+      urls.cpython-312.pyc
+      views.cpython-312.pyc
+      __init__.cpython-312.pyc
   app.py
+    asgi.py
+    settings.py
+    urls.py
+    wsgi.py
+    __init__.py
+      settings.cpython-312.pyc
+      urls.cpython-312.pyc
+      wsgi.cpython-312.pyc
+      __init__.cpython-312.pyc
+  db.sqlite3
   estructura.txt
+  manage.py
   requirements.txt
+    agenda_form.html
     barrasa.html
     beauty.html
+    gracias.html
     index.html
           base.py
           py.typed

@@ -4,5 +4,7 @@ from . import views
 urlpatterns = [
     path('', views.home, name = 'home'), 
     path('agenda/', views.agenda_form, name='agenda_form'),
+    path('barrasa/', views.barrasa, name='barrasa'),
+
 ]
 

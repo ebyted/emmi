@@ -17,3 +17,6 @@ def home(request):
 def agenda_form(request):
     form = AgendaForm()
     return render(request, 'agenda/agenda_form.html', {'form': form})
+
+def barrasa(request):
+    return render(request, 'barrasa.html')
