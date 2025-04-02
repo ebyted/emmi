@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Citas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#F5F5DC] p-8">
+    <h1 class="text-4xl text-center text-[#9B8BB4] mb-8">Citas Agendadas</h1>
+    <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <table class="w-full table-auto">
+            <thead class="bg-[#E6E6FA]">
+                <tr>
+                    <th class="px-4 py-2 text-left">Nombre</th>
+                    <th class="px-4 py-2 text-left">Email</th>
+                    <th class="px-4 py-2 text-left">Teléfono</th>
+                    <th class="px-4 py-2 text-left">Servicio</th>
+                    <th class="px-4 py-2 text-left">Mensaje</th>
+                    <th class="px-4 py-2 text-left">Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cita in citas %}
+                    <tr class="border-b">
+                        <td class="px-4 py-2">{{ cita.nombre }}</td>
+                        <td class="px-4 py-2">{{ cita.email }}</td>
+                        <td class="px-4 py-2">{{ cita.telefono }}</td>
+                        <td class="px-4 py-2">{{ cita.servicio }}</td>
+                        <td class="px-4 py-2">{{ cita.mensaje }}</td>
+                        <td class="px-4 py-2">{{ cita.fecha_creacion|date:"d/m/Y H:i" }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="6" class="text-center py-4 text-gray-500">No hay citas agendadas aún.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

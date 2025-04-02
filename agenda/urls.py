@@ -7,4 +7,6 @@ urlpatterns = [
     path('brow-design/', views.barrasa, name='brow_design'),
     path('wellness/', views.beauty, name='wellness'),
     path('gracias/', views.gracias, name='gracias'),
+    path('agendas/', views.lista_agendas, name='agendas'),
+    path('citas/', views.lista_citas, name='lista_citas'),
 ]

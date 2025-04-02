@@ -1,5 +1,14 @@
 from django.shortcuts import render, redirect
 from .forms import AgendaForm
+from .models import Agenda
+
+def lista_agendas(request):
+    agendas = Agenda.objects.all().order_by('-fecha_creacion')
+    return render(request, 'agenda_list.html', {'agendas': agendas})
+
+def lista_citas(request):
+    citas = Agenda.objects.all().order_by('-fecha_creacion')
+    return render(request, 'lista_citas.html', {'citas': citas})
 
 def barrasa(request):
     return render(request, 'barrasa.html')
