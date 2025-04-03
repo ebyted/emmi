@@ -2,7 +2,7 @@
 <html class="">
               
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   <script src="https://cdn.tailwindcss.com"></script>
@@ -16,7 +16,7 @@
     
 <style>
   * {
-    font-family: "Inter", sans-serif;
+    font-family: "Work Sans", sans-serif;
   }
 
   ::-webkit-scrollbar {
@@ -365,8 +365,8 @@
     <main class="container mx-auto px-8 py-12">
         <!-- Hero Section -->
         <section id="hero" class="text-center mb-16">
-            <h2 class="text-4xl text-gray-800 mb-4">Bienvenido a Tu Espacio de Belleza y Bienestar</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto">Descubre una experiencia única de belleza y bienestar con nuestros servicios especializados</p>
+          <h2 class="text-4xl text-gray-800 font-bold mb-4">Bienvenido a Tu Espacio de Belleza y Bienestar</h2>
+          <p class="text-gray-600 font-light max-w-2xl mx-auto">Descubre una experiencia única de belleza y bienestar con nuestros servicios especializados</p>
         </section>
 
         <!-- Services Navigation -->
@@ -378,8 +378,8 @@
        src="https://storage.googleapis.com/uxpilot-auth.appspot.com/d0a1056f96-bef463bec6f7abdc87fd.png"
        alt="elegant spa interior with pink accents, soft lighting, minimalist design">
   <div class="absolute bottom-0 left-0 right-0 p-6">
-      <h3 class="text-2xl text-white mb-2">Emmi Brow Design</h3>
-      <p class="text-white/90 mb-4">Diseño y cuidado experto para tus cejas</p>
+    <h3 class="text-2xl text-white font-semibold mb-2">Emmi Brow Design</h3>
+    <p class="text-white/90 font-light mb-4">Diseño y cuidado experto para tus cejas</p>
       <a href="{% url 'brow_design' %}" class="bg-[#A7D2CB] text-gray-800 px-8 py-3 rounded-lg hover:bg-[#F2D388] transition duration-300 inline-block">
           Agendar cita
       </a>
@@ -393,8 +393,8 @@
        src="https://storage.googleapis.com/uxpilot-auth.appspot.com/815e226a62-8e9cf47b7abebbbc76b7.png"
        alt="tranquil wellness spa room with mint green accents, bamboo elements">
   <div class="absolute bottom-0 left-0 right-0 p-6">
-      <h3 class="text-2xl text-white mb-2">Emmi Wellness Therapies</h3>
-      <p class="text-white/90 mb-4">Terapias holísticas para tu bienestar</p>
+      <h3 class="text-2xl text-white font-semibold mb-2">Emmi Wellness Therapies</h3>
+      <p class="text-white/90 font-light mb-4">Terapias holísticas para tu bienestar</p>
       <a href="{% url 'wellness' %}" class="bg-[#98FF98] hover:bg-[#98FF98]/90 text-gray-800 px-6 py-3 rounded-lg shadow-lg backdrop-blur-sm inline-block">
           Descubrir Terapias
       </a>
@@ -408,8 +408,8 @@
                 <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-full bg-[#FFB6C1]/20">
                     <i class="fa-solid fa-certificate text-[#FFB6C1] text-2xl"></i>
                 </div>
-                <h4 class="text-xl text-gray-800 mb-2">Experiencia Profesional</h4>
-                <p class="text-gray-600">Especialistas certificados en belleza y bienestar</p>
+                <h4 class="text-xl text-gray-800 font-semibold mb-2">Experiencia Profesional</h4>
+                <p class="text-gray-600 font-light">Especialistas certificados en belleza y bienestar</p>
             </div>
             <div id="feature-2" class="text-center">
                 <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-full bg-[#98FF98]/20">
@@ -432,7 +432,7 @@
   <div class="container mx-auto px-4">
     <h2 class="text-3xl font-bold text-center text-[#9B8BB4] mb-12">Agenda tu Cita</h2>
     <div class="max-w-xl mx-auto bg-[#F5F5DC] p-8 rounded-xl shadow-lg">
-      <form method="post" class="space-y-6">
+      <form method="post" class="space-y-6 font-light">
         {% csrf_token %}
         <div>
           {{ form.nombre.label_tag }}
