@@ -1,8 +1,10 @@
+{% load static %}
 {% load form_filters %}
 <html class="">
               
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   <script src="https://cdn.tailwindcss.com"></script>
@@ -16,7 +18,7 @@
     
 <style>
   * {
-    font-family: "Inter", sans-serif;
+    font-family: "Work Sans", sans-serif;
   }
 
   ::-webkit-scrollbar {
@@ -331,7 +333,9 @@
     <!-- Header -->
     <header id="header" class="fixed w-full bg-white/80 backdrop-blur-sm z-50 py-4">
         <nav class="container mx-auto px-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-[#9B8BB4]">emmi brow design</div>
+            <div>
+                <img src="{% static 'images/logo_emmi.png' %}" alt="Logo Emmi Brow" class="h-14 md:h-20 w-auto">
+              </div>
             <div class="hidden md:flex space-x-6">
                 <a href="#services" class="text-gray-600 hover:text-[#9B8BB4]">Servicios</a>
                 <a href="#about" class="text-gray-600 hover:text-[#9B8BB4]">Nosotros</a>
@@ -347,7 +351,7 @@
         <div class="absolute inset-0 bg-black/30"></div>
         <div class="relative container mx-auto px-4 h-full flex items-center">
             <div class="max-w-2xl text-white">
-                <h1 class="text-5xl md:text-6xl font-bold mb-6">emmi brow design</h1>
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">Emmi brow design</h1>
                 <h2 class="text-2xl md:text-3xl mb-6">Especialistas en el arte de tus cejas</h2>
                 <p class="text-lg mb-8">Descubre la transformación que tus cejas merecen en nuestro exclusivo estudio. Combinamos técnicas innovadoras con un toque artístico único para realzar tu belleza natural.</p>
                 <button class="bg-[#FFD1DC] text-gray-800 px-8 py-3 rounded-lg hover:bg-[#FFB6C1] transition duration-300">

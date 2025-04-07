@@ -1,4 +1,5 @@
 {% load form_filters %}
+{% load static %}
 <html class="">
               
 <head>
@@ -350,13 +351,12 @@
     <!-- Header -->
     <header id="header" class="py-6 px-8 bg-white/80 backdrop-blur-sm">
         <div class="container mx-auto flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <i class="fa-solid fa-spa text-[#FFB6C1] text-3xl"></i>
-                <h1 class="text-2xl text-gray-800">Emmi Beauty & Wellness</h1>
-            </div>
+          <a href="{% url 'home' %}" class="flex items-center gap-3">
+            <img src="{% static 'images/logo_emmi.png' %}" alt="Emmi Logo" class="h-20 w-20 ">
+        </a>
             <nav class="flex gap-6">
-                <span  class="text-gray-600 hover:text-[#FFB6C1] cursor-pointer">Inicio</span>
-                <span  class="text-gray-600 hover:text-[#FFB6C1] cursor-pointer">Contacto</span>
+              <a href="#booking" class="text-gray-600 hover:text-[#FFB6C1]">Inicio</a>
+                <a href="#contacto" class="text-gray-600 hover:text-[#FFB6C1]">Contacto</a>
                 <a href="#booking" class="text-gray-600 hover:text-[#FFB6C1]">Reservar</a>
             </nav>
         </div>
@@ -464,13 +464,12 @@
     </main>
 
     <!-- Footer -->
-    <footer id="footer" class="bg-white/80 backdrop-blur-sm mt-20 py-8">
+    <footer id="contacto" class="bg-white/80 backdrop-blur-sm mt-20 py-8">
         <div class="container mx-auto px-8">
             <div class="flex justify-between items-center">
-                <div class="flex items-center gap-3">
-                    <i class="fa-solid fa-spa text-[#FFB6C1] text-2xl"></i>
-                    <span class="text-gray-800">Emmi Beauty & Wellness</span>
-                </div>
+              <a href="{% url 'home' %}" class="flex items-center gap-3">
+                <img src="{% static 'images/logo_emmi.png' %}" alt="Emmi Logo" class="h-20 w-20 ">
+            </a>
                 <div class="flex gap-4">
                     <a href="#" class="text-gray-600 hover:text-[#FFB6C1]">
                         <i class="fa-brands fa-instagram text-xl"></i>
