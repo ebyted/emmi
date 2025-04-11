@@ -68,7 +68,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'emmi_db',
         'USER': 'ebyted',
-        'PASSWORD': 'shivah',
+        'PASSWORD': 'arkano',
         'HOST': 'localhost',
         'PORT': '5432',
     }
