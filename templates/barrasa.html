@@ -334,7 +334,9 @@
     <header id="header" class="fixed w-full bg-white/80 backdrop-blur-sm z-50 py-4">
         <nav class="container mx-auto px-4 flex justify-between items-center">
             <div>
-                <img src="{% static 'images/logo_emmi2.png' %}" alt="Logo Emmi Brow" class="h-14 md:h-20 w-auto">
+                <a href="{% url 'home' %}" class="flex items-center gap-3">
+                    <img src="{% static 'images/logo_emmi2.png' %}" alt="Emmi Logo" class="h-20 w-21">
+                </a>
               </div>
             <div class="hidden md:flex space-x-6">
                 <a href="#services" class="text-gray-600 hover:text-[#9B8BB4]">Servicios</a>
@@ -354,9 +356,9 @@
                 <h1 class="text-5xl md:text-6xl font-bold mb-6">Emmi brow design</h1>
                 <h2 class="text-2xl md:text-3xl mb-6">Especialistas en el arte de tus cejas</h2>
                 <p class="text-lg mb-8">Descubre la transformación que tus cejas merecen en nuestro exclusivo estudio. Combinamos técnicas innovadoras con un toque artístico único para realzar tu belleza natural.</p>
-                <button class="bg-[#FFD1DC] text-gray-800 px-8 py-3 rounded-lg hover:bg-[#FFB6C1] transition duration-300">
-                    Agendar cita
-                </button>
+                <a href="#services" class="inline-block bg-[#FFD1DC] text-gray-800 px-8 py-3 rounded-lg hover:bg-[#FFB6C1] transition duration-300">
+                    Nuestros Servicios
+                </a>
             </div>
         </div>
     </section>
