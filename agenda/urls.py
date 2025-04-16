@@ -1,4 +1,3 @@
-# agenda/urls.py o backend/urls.py si lo tienes todo ahí
 from django.urls import path
 from . import views
 
