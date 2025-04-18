@@ -38,6 +38,7 @@
         d65276d46529eef73f0d8cddde3e8ebe50eb0e
         fef04cb5c55690d6519b10be56a5058eee467a
         b412689be8d66e98e8c6ffbae4328e1bf2d37f
+        6ad53f29219913c297bf76523102f014954d77
         2acb7b970365af7aa0ba50471217719df73c52
         398c98ff21e7efa69a9c1adeaedbd95d248b13
         f780c2ba69ea60f6b92cd2da1be4dc4ea8ef0f
@@ -67,6 +68,7 @@
         8eaeb1b0419491a66dc9369ab3b1887156ca85
         722ab5931871f3d2732c9273d701f70308bb32
         a430f1cf330cece6dddb548f9126c0ef107bd2
+        73d603092e36bd93f50ccb5c934de08c702da4
         a1d546cd7c6d00df3bb799f1251929ee378b5b
         efdce579108ebde9b249ab7da5a9e3ce2ca0b9
         965a8f2b5b02b82c76638054215bb2dec01dce
@@ -126,10 +128,12 @@
         d157ebe2db63af2fd51368b5947594bd622b29
         0258e18e8341da6265db33b3bd7e5d1a69e757
         1aee2da12e200f9a46aad1770b5d6788b44796
+        6934db97d1ccc39dd5f18c6070a8d09bd5857f
         f684b8a9f13f268dc277378579e447a0188a5d
         fd01f630a857702ddc26d51743fafb86295a55
         404ae82121a24bca4b0bf4f0b592a3f1bea55a
         d1fa1be6ebf1e41a7edce3dfac0b5bfc434683
+        0cd96c4ca4e1aca167311786738ebcaff1062d
         6a7f06fe4fdf4028971d5ed5f51faa0e38d993
         1a5029ebb9dc21b82cd4a2d645af6bd11e881c
         713b73473747970b1d467dc40e399be142e2c5
@@ -155,11 +159,13 @@
         c96fd2fb51698e2ee3ff362e62f903057b3ec8
         d81564a3fc67fe8a3f334033cbffab6bcbffe8
         d9eb9a1abafc8c2f4deb628ed19e728a33cbe7
+        c5ad6a383fab8c99e3abb634339efe79bf6f4b
         9b208abd3340b413d4b0d53f7300b5a81bc9f2
         c089e0b02dceab7d366a502e468cc1d1e97066
         d98d3c6c523a915dfd3793359113ea1d324825
         03169b49687a1c40100ec34a0967d99d80585c
         bd614622a8c510fca54deb08bb988c2ae931b7
+        d3d3a842d33a5aad7144c50ab0837d74cc779f
         c996f55f29de2ca5432e2cf77c395173ee4c7c
         3b016923c9d2e295fd2bf50b73e8997d3d4a30
         ab42372afbc6e3f606fea6080e631e0217062a
@@ -191,6 +197,7 @@
         7c7b5147e6d4f4c3a99b08063fa136c59ee0f5
         6582576e373de83890c0dd0cf2c04bc3281e39
         48c643548d3222cff05925d03e88750f321933
+        989c4e63d94c4e763126f5a608080c4448e631
         ebba63b154cfb3d86228a648f9bb3d9d7fd08b
         8757bf990a0a19d54d5d849719e7cb077f0f85
         9ecd36a67103c459440f756fc84f5d273ad6f9
@@ -233,10 +240,12 @@
       __init__.cpython-312.pyc
   app.py
     asgi.py
+    celery.py
     settings.py
     urls.py
     wsgi.py
     __init__.py
+      celery.cpython-312.pyc
       settings.cpython-312.pyc
       urls.cpython-312.pyc
       wsgi.cpython-312.pyc
@@ -245,6 +254,7 @@
   estructura.txt
   manage.py
   requirements.txt
+  scheduler.py
       logo_emmi.png
       logo_emmi2.png
     agenda_form.html

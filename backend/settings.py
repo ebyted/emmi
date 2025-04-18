@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'agenda',
+    'django_apscheduler',
 ]
 
 MIDDLEWARE = [
@@ -120,8 +121,3 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-INSTALLED_APPS += ['django_celery_beat']
-
-CELERY_BROKER_URL = 'redis://localhost:6379/0'  # necesitas Redis
-CELERY_ACCEPT_CONTENT = ['json']
-CELERY_TASK_SERIALIZER = 'json'

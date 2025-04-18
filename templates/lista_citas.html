@@ -1,41 +1,68 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Lista de Citas</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <title>Citas Agendadas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-[#F5F5DC] p-8">
-    <h1 class="text-4xl text-center text-[#9B8BB4] mb-8">Citas Agendadas</h1>
-    <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
-        <table class="w-full table-auto">
-            <thead class="bg-[#E6E6FA]">
-                <tr>
-                    <th class="px-4 py-2 text-left">Nombre</th>
-                    <th class="px-4 py-2 text-left">Email</th>
-                    <th class="px-4 py-2 text-left">Teléfono</th>
-                    <th class="px-4 py-2 text-left">Servicio</th>
-                    <th class="px-4 py-2 text-left">Mensaje</th>
-                    <th class="px-4 py-2 text-left">Fecha</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for cita in citas %}
-                    <tr class="border-b">
-                        <td class="px-4 py-2">{{ cita.nombre }}</td>
-                        <td class="px-4 py-2">{{ cita.email }}</td>
-                        <td class="px-4 py-2">{{ cita.telefono }}</td>
-                        <td class="px-4 py-2">{{ cita.servicio }}</td>
-                        <td class="px-4 py-2">{{ cita.mensaje }}</td>
-                        <td class="px-4 py-2">{{ cita.fecha_creacion|date:"d/m/Y H:i" }}</td>
-                    </tr>
-                {% empty %}
-                    <tr>
-                        <td colspan="6" class="text-center py-4 text-gray-500">No hay citas agendadas aún.</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
+
+  <h1 class="text-4xl text-center text-[#9B8BB4] mb-8">Citas Agendadas</h1>
+
+  <!-- Botones de filtro -->
+  <div class="flex justify-center space-x-4 mb-8">
+    <button onclick="filtrarCitas('todos')" class="px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded-lg">Mostrar Todos</button>
+    <button onclick="filtrarCitas('index')" class="px-4 py-2 bg-[#FADADD] hover:bg-pink-200 rounded-lg">Desde Index</button>
+    <button onclick="filtrarCitas('barrasa')" class="px-4 py-2 bg-[#A7D2CB] hover:bg-teal-200 rounded-lg">Desde Barrasa</button>
+    <button onclick="filtrarCitas('beauty')" class="px-4 py-2 bg-[#E6E6FA] hover:bg-indigo-100 rounded-lg">Desde Beauty</button>
+  </div>
+
+  <!-- Renderizado dinámico de citas por origen -->
+  {% for origen, citas_origen in citas_por_origen.items %}
+    <div class="tabla-citas mb-12" data-origen="{{ origen }}">
+      <h2 class="text-2xl font-semibold mb-4 text-center text-gray-700 capitalize">Citas desde {{ origen }}</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full table-auto bg-white rounded-lg shadow">
+          <thead class="bg-[#E6E6FA]">
+            <tr>
+              <th class="px-4 py-2 text-left">Nombre</th>
+              <th class="px-4 py-2 text-left">Email</th>
+              <th class="px-4 py-2 text-left">Teléfono</th>
+              <th class="px-4 py-2 text-left">Servicio</th>
+              <th class="px-4 py-2 text-left">Mensaje</th>
+              <th class="px-4 py-2 text-left">Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for cita in citas_origen %}
+              <tr class="border-b">
+                <td class="px-4 py-2">{{ cita.nombre }}</td>
+                <td class="px-4 py-2">{{ cita.email }}</td>
+                <td class="px-4 py-2">{{ cita.telefono }}</td>
+                <td class="px-4 py-2">{{ cita.servicio }}</td>
+                <td class="px-4 py-2">{{ cita.mensaje }}</td>
+                <td class="px-4 py-2">{{ cita.fecha_creacion|date:"d/m/Y H:i" }}</td>
+              </tr>
+            {% empty %}
+              <tr>
+                <td colspan="6" class="text-center py-4 text-gray-500">No hay citas registradas para este origen.</td>
+              </tr>
+            {% endfor %}
+          </tbody>
         </table>
+      </div>
     </div>
+  {% endfor %}
+
+  <!-- Script para filtro dinámico -->
+  <script>
+    function filtrarCitas(origen) {
+      document.querySelectorAll('.tabla-citas').forEach(tabla => {
+        tabla.style.display = (origen === 'todos' || tabla.dataset.origen === origen) ? 'block' : 'none';
+      });
+    }
+  </script>
+
 </body>
 </html>
