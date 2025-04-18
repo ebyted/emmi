@@ -1,6 +1,7 @@
     COMMIT_EDITMSG
     config
     description
+    FETCH_HEAD
     HEAD
       applypatch-msg.sample
       commit-msg.sample
@@ -19,56 +20,89 @@
     index
       exclude
       HEAD
+          development
             agenda-form-django
           main
-              agenda-form-django
+            development
             HEAD
+            main
         2431fb7a2f349ec42b6b1239e8a9757b656a83
         b57081ac4dc63ccaccc3408054e47c5bd4962d
         fbe8b252d83b5c4acb07f5b246c39ebff3596e
         8fe0d7461697cdaf2fe14ed431c3dfd2d822c9
         bda9da7a5f434bf9c6ce10a21dc1e84f028d80
         1e5e1f75d8875b40098fdeadc2f3dddfcef776
+        a7351ad909accd0289408efbe716f17de915a8
+        1ed08497a1654b1f5ff263a908a9d1ee9b7ccb
+        6cdded0778731e1f364ba3bcefa80a25ae2584
         d65276d46529eef73f0d8cddde3e8ebe50eb0e
+        fef04cb5c55690d6519b10be56a5058eee467a
+        b412689be8d66e98e8c6ffbae4328e1bf2d37f
+        2acb7b970365af7aa0ba50471217719df73c52
+        398c98ff21e7efa69a9c1adeaedbd95d248b13
         f780c2ba69ea60f6b92cd2da1be4dc4ea8ef0f
+        c9f083f75d99436b8dd139993c32eeb1b178d2
+        67ea472e5b6713010bc12bafd046304978ba7a
         ca00c2a0e018d3ddecf920cd7c9a65a3812d3e
         6e082eeeffecbe853443eff7d9600d67fd65d6
         38ff5ec26df8c80984a3fd4b5fdc97fb69fbad
         17278f8650b444cd2ff11c96a403985312022b
+        2ff07e3626951788457e473b4caab68f8aab99
         b3d1992c8ac893a747bd42e87b824c3f6eb939
         53486a874bccdd381b96c92cdbf8ab71389c14
+        0991d8f4416bd363b784f1709ebf942efea4f3
         16349bf98fbf18205264e2901be7b086fbc2e3
+        32cb62b61ea2ba2f74e9992b26922ea03cfda1
         43be2f8c2c698491f69684e122c0facdf86dae
+        8dc1abf3e147e3e5d4940b7890a6381a0834e9
+        8bedc71317aa9e1ed3078a8a9c9e448070e0a8
+        061f8b9f872efa14858423bdb61f468dd69338
         5738617abc0e2c1df1300c7c74da359d389d90
         93da9536f5fbd2de3dcb22a23a4b55b6fafecd
+        f85821b9cddbb19b48b1057ca32e3276abb37a
         11ff7646db7a0d265e3fc8821528d9800be30d
         87ca5b665c5184aa48eb43ebbccb9befbdfaf8
+        ea19e5638c2dab9275f2b047e8654433492f60
         7920bf4e3d62f25ca5c839afa6e6a7ebcd8792
         8eaeb1b0419491a66dc9369ab3b1887156ca85
         722ab5931871f3d2732c9273d701f70308bb32
+        a430f1cf330cece6dddb548f9126c0ef107bd2
         a1d546cd7c6d00df3bb799f1251929ee378b5b
         efdce579108ebde9b249ab7da5a9e3ce2ca0b9
         965a8f2b5b02b82c76638054215bb2dec01dce
+        28bde64181dcb5241707fb7b55cf56a6aca574
         9d8f1c68c23d203d145fd307be7e53cf7ea3c1
         fc4507decb96afb2f7dd25149e70f70252f8cd
+        830fb884cb8fd5a06c10e5f7d9e931c91ed002
+        5f29aa5f1673d92ed7b2720f101c7237f9f61e
         e1fae3838d62271b327434b8eb529a74e1771d
+        1aa8afa1fe2f10e27828f7ebd7d73167545d15
         bc8c3bb46cd7dbd7c69c5648a863e4480de38b
+        8ec4075273ace93dd68e20d6252eea4cd70be2
         1f678b62f6603394f5da57bebb728ddac0c55c
+        5ae196d1d20153d142b0d57c1b180d7250ef93
         0281bfc1bce640f78bc24e1bf28bb4af46a079
+        1cea8a268ac53b488e9d7b247afa0e285f2b6a
         2690b60e7734613af5def3a12fe99dc28eaf73
         a87fabf741adb405a2b8dd4b29795eb13f5542
         6ae121ba0c06155dfe963e9b5cf50e86022018
         8946bbd96d91d8ad52b789d9c7cbcc49f7118a
         e8ef8e528093fbeb35976240a7c050dafa5c62
+        23bb39d185036b0d242e4f2448a4e73ea34a2a
+        6f176f333f643bab5f3983e06ff05d8a74061b
         488f64ddaa314f21f5caab0798e8f01b9f83b3
         4cfe703e93bb51263bae8e30ae09f9b86658b3
         c01fd1209cb82b638ae0a2a2a4c21b952a90df
+        55f7ec71fe03f45e8bcf32cde4cae381b3b95c
         24085f58da39115961e97f6f50a6f204bcc720
         6eb54e15af1895e5828b285485b206d05b3bd9
         4cb493e48dff0eefe17ec271697b74d55e4eda
         e503c2dd97ba78597f6ff6e4393132753573f6
+        0ee1a7f3c7da5918eafd6eb8dc352d258e3666
+        71490cf296507f8b250f34166e5ff453b547ea
         080af3ab529814d096e748f1c2c5e68b6543d9
         aaca155e611b07b1fa479a1a6eeb6f46ec3134
+        46cdca28a2b874aa1d6975b93d7228eb87b4ca
         443118b174c462408d3b0665eb70516990d480
         7724e0b4c922ceccaa276e079d41615963850b
         b5af84a880205d5209493bda271d6830cdc024
@@ -77,50 +111,87 @@
         4199ea5a902be3a1952c4c1ffec123ebf8bc80
         41d07cbf1d9328439b453b78d0c2b6febacf1d
         7b34ed573063dc5f66a64625f9bb8d473288af
+        10bc8b7cf878ed03686670d3e2f5b765e3a279
+        a9895b7320bd3af05168c5c9751806b5d7c095
+        421e70649e48d37881efa63bc0033101adcfcb
         b118be16a8bf2a0993ca940ebe3e05099d553e
         ab1f0caa3f9439475f66f441adaa7ee5d0633c
         b079c8ef2e72e6926f24eb3ec0ac8821dbbf4c
+        fd11e1e115d79565197c285a35e927611f2458
+        7b49b59fa288eba4421b19e3fa315dad9d9dd3
         224908ca527c3f957673f33c65367dd35620d4
+        955e354aadf1f1fada2622f9fb4a586f54ba7c
+        c5a7799804add864fe7fae6739dcd1b553c58c
+        b6af8785781fc4d4faaa8137a570ba88446db3
+        d157ebe2db63af2fd51368b5947594bd622b29
+        0258e18e8341da6265db33b3bd7e5d1a69e757
         1aee2da12e200f9a46aad1770b5d6788b44796
         f684b8a9f13f268dc277378579e447a0188a5d
+        fd01f630a857702ddc26d51743fafb86295a55
         404ae82121a24bca4b0bf4f0b592a3f1bea55a
         d1fa1be6ebf1e41a7edce3dfac0b5bfc434683
         6a7f06fe4fdf4028971d5ed5f51faa0e38d993
         1a5029ebb9dc21b82cd4a2d645af6bd11e881c
         713b73473747970b1d467dc40e399be142e2c5
+        cc6adb62313988cc2c92e0ddb22625ba6aec0b
+        fe76d1b6be6d9a20bbba0cdf0e568e0e1211ab
         8f61740d6173a2d4700972ad0943c85e97a9ee
         196461eea31080fe2794226ca77596d968982c
         750d2d2845cd12d7ab164b852e09573a024eed
+        7d8f08c564e070c4d09794c5f82260a6ba89a0
         f855c3f8e8d601b1d2b27129e374507ed6c28b
+        141c065612989ad8edb35221531c0533c913ea
+        c65d01b36e4c05c287fdfcfbbf552392bd5221
         a8cf0c13e489928c8c3a751e1f02bab7aab1a7
+        74f19729f94095c0b06d9b0c8d0c8372151a8e
+        80dffc19c6a182d228c9c568a8c84fa87de747
+        cc20ead9c6fd1bc8328657647a61f6c0db75a9
         a0d05d87dd7c04e2e4b8a02e0d3eadeffdfff5
+        b020c8d98e87b182d9712b34bbbc926c6ee42c
         b832b5c78efeec7e299ef4510de816a35bcfd9
+        f55ec68239db1cff1cf2095a03d3f5733b3c76
         927f92aea225b3d7d404c4704c0f2dc954c59a
         b03704d2312231d3810b7d3b1a690c9d5a6563
         c96fd2fb51698e2ee3ff362e62f903057b3ec8
+        d81564a3fc67fe8a3f334033cbffab6bcbffe8
         d9eb9a1abafc8c2f4deb628ed19e728a33cbe7
         9b208abd3340b413d4b0d53f7300b5a81bc9f2
         c089e0b02dceab7d366a502e468cc1d1e97066
         d98d3c6c523a915dfd3793359113ea1d324825
         03169b49687a1c40100ec34a0967d99d80585c
+        bd614622a8c510fca54deb08bb988c2ae931b7
         c996f55f29de2ca5432e2cf77c395173ee4c7c
+        3b016923c9d2e295fd2bf50b73e8997d3d4a30
+        ab42372afbc6e3f606fea6080e631e0217062a
+        b4531462fe4589706e604d3a83eb616f48622a
         5d3fb09d917025c2420edf1af3e684ba9dbecd
+        862c3fcafbdbccb982eaa4f1589d75abd54ef1
+        9958bd9fbd69beaca0cf807492a9d8bfd9b021
         016afe59b21c13ea9fcd8fbe56d1dd733115d6
         728f8df90d0b637c1bbf859c44e68f0b5ca7a7
         71c1fbf4b8077720d0f78bcd6054035e9c9b4d
+        2a686d4243659605630eb86f61bed2ced589bb
+        7b4f04831ab1f9ce83fdd630a8101b155853a3
         cbf08a46787014b184ef78c5bae1ba21156d30
         9a45d0943550ab500fac532408c475486b0f49
         9f0729674f74511765886e91b04bad6154866e
+        fe0dc10599bd8e1094091c9111b270632f5904
         904db7926ccbeac3387f910b4233ea5dcc6054
+        e8036ccb19668e49138477ba62d5d1fa1da496
         6431e2c0b15d12a46e1e435facbc8484b6f0ac
         01e6acff07411d7b70b40808d72e64f55d2fd6
         4af17b9208a4c8f6a1ee49d3bb9172a86b23b7
         65ecb82f2bfccf231590ba131b92f942ff50ca
         46c2f3830303e94fa3786a46df3c798e9a450d
         78e96ffa50a5916aa40589792158476084c30c
+        a3fa797911742ade1eb7925766aeb61c09fa54
         87e4393d35d54137a28bf7fee709c6f3ecf5e0
+        160858e4fc99370e1f2c57b8ee9578eea0ef9d
         36d8dd1cf6f7c7798cb42737889db258750055
         7c7b5147e6d4f4c3a99b08063fa136c59ee0f5
+        6582576e373de83890c0dd0cf2c04bc3281e39
+        48c643548d3222cff05925d03e88750f321933
+        ebba63b154cfb3d86228a648f9bb3d9d7fd08b
         8757bf990a0a19d54d5d849719e7cb077f0f85
         9ecd36a67103c459440f756fc84f5d273ad6f9
         858b0327a7ea2c849be0201e7bdc8031ea9e40
@@ -131,11 +202,14 @@
         pack-25f9f25b8c48918bfd70def4b61b63070d8a55da.idx
         pack-25f9f25b8c48918bfd70def4b61b63070d8a55da.pack
         pack-25f9f25b8c48918bfd70def4b61b63070d8a55da.rev
+    ORIG_HEAD
     packed-refs
+        development
           agenda-form-django
         main
-            agenda-form-django
+          development
           HEAD
+          main
     admin.py
     apps.py
     forms.py
@@ -172,6 +246,7 @@
   manage.py
   requirements.txt
       logo_emmi.png
+      logo_emmi2.png
     agenda_form.html
     agenda_list.html
     barrasa.html
