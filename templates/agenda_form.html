@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Agendar Servicio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-[#E6E6FA] text-gray-800 min-h-screen flex items-center justify-center p-4">
+  <div class="bg-white rounded-xl shadow-lg p-8 max-w-xl w-full">
+    <h2 class="text-3xl font-bold text-center text-[#9B8BB4] mb-6">Agenda tu Cita</h2>
+    <form method="post" class="space-y-4">
+      {% csrf_token %}
+      <div>
+        {{ form.nombre.label_tag }}
+        {{ form.nombre|add_class:"w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#A7D2CB]" }}
+      </div>
+      <div>
+        {{ form.email.label_tag }}
+        {{ form.email|add_class:"w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#A7D2CB]" }}
+      </div>
+      <div>
+        {{ form.telefono.label_tag }}
+        {{ form.telefono|add_class:"w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#A7D2CB]" }}
+      </div>
+      <div>
+        {{ form.servicio.label_tag }}
+        {{ form.servicio|add_class:"w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#A7D2CB]" }}
+      </div>
+      <div>
+        {{ form.mensaje.label_tag }}
+        {{ form.mensaje|add_class:"w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#A7D2CB]" }}
+      </div>
+      <button type="submit" class="w-full bg-[#FADADD] text-gray-800 py-3 rounded-lg hover:bg-[#E6E6FA] transition duration-300">
+        Reservar Cita
+      </button>
+    </form>
+    <div class="text-center mt-4">
+      <a href="/" class="text-sm text-[#9B8BB4] hover:underline">Volver al inicio</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Iniciar Sesión</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#F5F5DC] flex items-center justify-center h-screen">
+  <div class="w-full max-w-md">
+    <div class="flex justify-center mb-6">
+      <img src="{% static 'images/logo_emmi2.png' %}" alt="Logo del spa" class="w-32 h-auto">
+    </div>
+    <form method="POST" class="bg-white p-8 rounded-lg shadow-md">
+      {% csrf_token %}
+      <h2 class="text-2xl font-bold mb-6 text-center text-[#9B8BB4]">Iniciar Sesión</h2>
+
+      {% if messages %}
+        {% for message in messages %}
+          <div class="mb-4 text-red-500">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+
+      <label class="block mb-2 font-medium">Usuario</label>
+      <input type="text" name="username" required class="w-full p-2 mb-4 border rounded-md">
+
+      <label class="block mb-2 font-medium">Contraseña</label>
+      <input type="password" name="password" required class="w-full p-2 mb-6 border rounded-md">
+
+      <button type="submit" class="w-full bg-[#9B8BB4] text-white py-2 px-4 rounded hover:bg-[#8265a7]">
+        Ingresar
+      </button>
+    </form>
+  </div>
+</body>
+</html>
