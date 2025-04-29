@@ -70,7 +70,7 @@ DATABASES = {
         'NAME': os.getenv('POSTGRES_DB', 'emmi_db'),
         'USER': os.getenv('POSTGRES_USER', 'emmi_user'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'supersecurepassword'),
-        'HOST': os.getenv('POSTGRES_HOST', 'db'),
+        'HOST': '127.0.0.1',
         'PORT': os.getenv('POSTGRES_PORT', '5432'),
     }
 }
