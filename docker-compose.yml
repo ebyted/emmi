@@ -3,14 +3,13 @@ version: '3.8'
 services:
   web:
     build: .
-    command: ./entrypoint.sh
-    ports:
-      - "8000:8000"
-    env_file:
-      - .env
+    container_name: emmi_web
+    command: bash -c "python manage.py migrate && gunicorn backend.wsgi:application --bind 0.0.0.0:8000"
     volumes:
       - .:/code
     working_dir: /code
+    env_file:
+      - .env
     depends_on:
       - db
 
@@ -19,9 +18,9 @@ services:
     image: postgres:15
     restart: always
     environment:
-      POSTGRES_DB: emmi_db
-      POSTGRES_USER: ebyted
-      POSTGRES_PASSWORD: arkano
+      - POSTGRES_DB=emmi_db
+      - POSTGRES_USER=ebyted
+      - POSTGRES_PASSWORD=arkano
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     healthcheck:
@@ -30,17 +29,16 @@ services:
       timeout: 5s
       retries: 5
 
+  nginx:
+    image: nginx:latest
+    container_name: emmi_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./static:/static  # sirve archivos estáticos si los necesitas
+    depends_on:
+      - web
+
 volumes:
   postgres_data:
-  
-nginx:
-  image: nginx:latest
-  ports:
-    - "80:80"
-    - "443:443"
-  volumes:
-    - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-    - ./static:/static
-  depends_on:
-    - web 
-  
