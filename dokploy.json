@@ -1,5 +1,15 @@
 {
-    "type": "docker-compose",
-    "dockerComposePath": "docker-compose.yml",
-    "dockerContextPath": "."
+    "buildType": "Dockerfile",
+    "dockerfilePath": "Dockerfile",
+    "context": ".",
+    "services": {
+      "web": {
+        "labels": {
+          "traefik.enable": "true",
+          "traefik.http.routers.emmi.rule": "Host(`emmibrows.com`) || Host(`www.emmibrows.com`)",
+          "traefik.http.routers.emmi.entrypoints": "websecure",
+          "traefik.http.routers.emmi.tls": "true"
+        }
+      }
+    }
   }
