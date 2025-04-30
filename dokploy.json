@@ -1,0 +1,5 @@
+{
+    "type": "docker-compose",
+    "dockerComposePath": "docker-compose.yml",
+    "dockerContextPath": "."
+  }
