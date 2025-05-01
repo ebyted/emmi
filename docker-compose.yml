@@ -1,11 +1,8 @@
-version: '3.8'
-
 services:
   web:
     build: .
     container_name: emmi_web
-    command: >
-      bash -c "until nc -z db 5432; do echo '⏳ Esperando a DB...'; sleep 1; done;
+    command:  until nc -z db 5432; do echo '⏳ Esperando a DB...'; sleep 1; done;
       echo '✅ DB lista';
       python manage.py migrate &&
       gunicorn config.wsgi:application --bind 0.0.0.0:8002"
@@ -15,35 +12,40 @@ services:
     env_file:
       - .env
     networks:
-      - traefik
+      - default
+      - dokploy-network
     labels:
       - "traefik.enable=true"
+
       - "traefik.http.routers.emmi.rule=Host(`emmibrows.com`)"
       - "traefik.http.routers.emmi.entrypoints=web"
       - "traefik.http.routers.emmi.service=emmiservice"
+
       - "traefik.http.routers.emmisecure.rule=Host(`emmibrows.com`)"
       - "traefik.http.routers.emmisecure.entrypoints=websecure"
       - "traefik.http.routers.emmisecure.tls.certresolver=letsencrypt"
       - "traefik.http.routers.emmisecure.service=emmiservice"
+
       - "traefik.http.services.emmiservice.loadbalancer.server.port=8002"
-    restart: unless-stopped
 
   db:
     image: postgres:15
-    container_name: emmi_db
-    environment:
-      - POSTGRES_DB=emmi_db
-      - POSTGRES_USER=ebyted
-      - POSTGRES_PASSWORD=arkano
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    networks:
-      - traefik
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     restart: always
-
-networks:
-  traefik:
-    external: true
+    networks:
+     - default
+     - dokploy-network
 
 volumes:
   postgres_data:
+
+networks:
+  default:
+    driver: bridge
+  dokploy-network:
+    external: true
