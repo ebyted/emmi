@@ -3,7 +3,7 @@ FROM python:3.11
 WORKDIR /code
 
 RUN apt-get update && \
-    apt-get install -y gcc libpq-dev netcat-openbsd postgresql-client && \
+    apt-get install -y gcc libpq-dev netcat-openbsd && \
     apt-get clean
 
 COPY requirements.txt /code/
