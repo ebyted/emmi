@@ -4,6 +4,7 @@ WORKDIR /code
 
 RUN apt-get update && \
     apt-get install -y gcc libpq-dev netcat-openbsd && \
+    apt-get install postgresql-client -y && \
     apt-get clean
 
 COPY requirements.txt /code/
