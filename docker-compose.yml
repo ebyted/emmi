@@ -31,22 +31,17 @@ services:
 
   db:
     container_name: emmi_db
-    image: postgres:15
-    restart: always
-    environment:
-      - POSTGRES_DB=emmi_db
-      - POSTGRES_USER=ebyted
-      - POSTGRES_PASSWORD=arkano
+     image: postgres:15
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ebyted"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    restart: always
     networks:
-      - default
-      - dokploy-network
+     - default
+     - dokploy-network
 
 volumes:
   postgres_data:
