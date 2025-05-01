@@ -1,18 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 
-# Espera a que la base de datos esté disponible
-if [ -z "$1" ]; then
-  echo "Usage: $0 <host> <command>"
-  exit 1
-fi
+echo "⏳ Esperando a que PostgreSQL esté disponible..."
 
-HOST="$1"
-shift
-
-until pg_isready -h "$HOST" -p 5432; do
-  echo "Postgres is unavailable - sleeping"
+until nc -z "$POSTGRES_HOST" "$POSTGRES_PORT"; do
+  echo "Postgres aún no responde en $POSTGRES_HOST:$POSTGRES_PORT - durmiendo"
   sleep 1
 done
 
-echo "Postgres is up - executing command"
+echo "✅ PostgreSQL está disponible — continuando..."
 exec "$@"
