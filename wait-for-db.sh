@@ -1,18 +1,18 @@
-#!/bin/bash
+#!/bin/sh
 
-DB_HOST=${POSTGRES_HOST:-db}
-DB_PORT=${POSTGRES_PORT:-5432}
+# Espera a que la base de datos esté disponible
+if [ -z "$1" ]; then
+  echo "Usage: $0 <host> <command>"
+  exit 1
+fi
 
-echo "⏳ Esperando a PostgreSQL en $DB_HOST:$DB_PORT..."
+HOST="$1"
+shift
 
-# Esperar hasta que PostgreSQL esté listo
-while ! nc -z "$DB_HOST" "$DB_PORT"; do
-  echo "Postgres aún no disponible — esperando..."
+until pg_isready -h "$HOST" -p 5432; do
+  echo "Postgres is unavailable - sleeping"
   sleep 1
 done
 
-echo "✅ PostgreSQL está disponible. Ejecutando la aplicación..."
-
-# Ejecutar migraciones y luego arrancar Gunicorn
-python manage.py migrate && \
-gunicorn config.wsgi:application --bind 0.0.0.0:8002
+echo "Postgres is up - executing command"
+exec "$@"
