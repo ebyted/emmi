@@ -1,10 +1,24 @@
-version: '3.8'
+services:
+  traefik:
+    image: traefik:v2.10
+    command:
+      - "--configFile=/etc/traefik/traefik.yml"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/dokploy/traefik/sites/emmi/traefik.yml:/etc/traefik/traefik.yml
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/dokploy/traefik/sites/emmi/letsencrypt:/letsencrypt
+    networks:
+      - default
+      - dokploy-network
 
 services:
   web:
     build: .
     container_name: emmi_web
-    command: bash -c "python manage.py migrate && gunicorn backend.wsgi:application --bind 0.0.0.0:8000"
+    command: bash -c "python manage.py migrate && gunicorn backend.wsgi:application --bind 0.0.0.0:8002"
     volumes:
       - .:/code
     working_dir: /code
@@ -29,16 +43,5 @@ services:
       timeout: 5s
       retries: 5
 
-  nginx:
-    image: nginx:latest
-    container_name: emmi_nginx
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./static:/static  # sirve archivos estáticos si los necesitas
-    depends_on:
-      - web
-
-volumes:
+  volumes:
   postgres_data:

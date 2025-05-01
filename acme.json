@@ -1,9 +1,0 @@
-services:
-  traefik:
-    image: traefik:v2.10
-    command:
-      - "--certificatesresolvers.le.acme.email=tu-correo@dominio.com"
-      - "--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json"
-      - "--certificatesresolvers.le.acme.tlschallenge=true"
-    volumes:
-      - "./acme.json:/letsencrypt/acme.json"
