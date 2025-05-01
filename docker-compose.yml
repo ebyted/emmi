@@ -34,9 +34,10 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_DB=${POSTGRES_DB}
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      environment:
+      - POSTGRES_DB=emmi_db
+      - POSTGRES_USER=ebyted
+      - POSTGRES_PASSWORD=arkano
     restart: always
     networks:
      - default
