@@ -1,16 +1,16 @@
 FROM python:3.11
 
-WORKDIR /code
+WORKDIR /app
 
 RUN apt-get update && \
     apt-get install -y gcc libpq-dev netcat-openbsd postgresql-client && \
     apt-get clean
 
-COPY requirements.txt /code/
+COPY requirements.txt /app/
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . /code/
+COPY . /app/
 COPY wait-for-db.sh /wait-for-db.sh
 RUN chmod +x /wait-for-db.sh
 
