@@ -20,12 +20,30 @@ services:
     container_name: emmi_web
     command: bash -c "python manage.py migrate && gunicorn backend.wsgi:application --bind 0.0.0.0:8002"
     volumes:
-      - .:/code
-    working_dir: /code
+      - .:/app
+    working_dir: /app
     env_file:
       - .env
-    depends_on:
-      - db
+    networks:
+      - default
+      - dokploy-network
+    labels:
+      - "traefik.enable=true"
+
+      - "traefik.http.routers.emmi.rule=Host(`emmibrows.com`)"
+      - "traefik.http.routers.emmi.entrypoints=web"
+      - "traefik.http.routers.emmi.service=emmiservice"
+
+      - "traefik.http.routers.emmisecure.rule=Host(`emmibrows.com`)"
+      - "traefik.http.routers.emmisecure.entrypoints=websecure"
+      - "traefik.http.routers.emmisecure.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.emmisecure.service=emmiservice"
+
+      - "traefik.http.services.emmiservice.loadbalancer.server.port=8002"
+
+    command: >
+      bash -c "python manage.py migrate &&
+               gunicorn backend.wsgi:application --bind 0.0.0.0:8002"
 
   db:
     container_name: emmi_db
@@ -42,6 +60,14 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - default
 
-  volumes:
+volumes:
   postgres_data:
+
+networks:
+  default:
+    driver: bridge
+  dokploy-network:
+    external: true

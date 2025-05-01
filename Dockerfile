@@ -1,5 +1,7 @@
+# Imagen base de Python
 FROM python:3.11-slim
 
+# Crear y usar el directorio de trabajo
 WORKDIR /app
 
 COPY . .
