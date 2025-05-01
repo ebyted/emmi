@@ -1,18 +1,17 @@
-# Base image
 FROM python:3.11
 
-# Crear entorno virtual
-ENV VIRTUAL_ENV=/opt/venv
-RUN python -m venv $VIRTUAL_ENV
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+WORKDIR /code
 
-# Instalar dependencias
-COPY requirements.txt .
-RUN pip install --upgrade pip && pip install -r requirements.txt
+RUN apt-get update && \
+    apt-get install -y gcc libpq-dev netcat-openbsd && \
+    apt-get clean
 
-# Copiar el resto del código
-COPY . /app
-WORKDIR /app
+COPY requirements.txt /code/
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Comando para ejecutar la app
-CMD ["python", "app.py"]
+COPY . /code/
+COPY wait-for-db.sh /code/wait-for-db.sh
+RUN chmod +x /code/wait-for-db.sh
+
+CMD ["./wait-for-db.sh", "db", "bash", "-c", "python manage.py migrate && gunicorn config.wsgi:application --bind 0.0.0.0:8002"]
