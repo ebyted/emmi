@@ -3,7 +3,7 @@ FROM python:3.11
 WORKDIR /code
 
 RUN apt-get update && \
-    apt-get install -y gcc libpq-dev netcat-openbsd && \
+    apt-get install -y gcc libpq-dev netcat-openbsd postgresql-client && \
     apt-get clean
 
 COPY requirements.txt /code/
@@ -11,10 +11,7 @@ RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /code/
-COPY wait-for-db.sh /code/wait-for-db.sh
-RUN chmod +x /code/wait-for-db.sh
+COPY wait-for-db.sh /wait-for-db.sh
+RUN chmod +x /wait-for-db.sh
 
-RUN apt-get update && apt-get install -y postgresql-client
-
-
-CMD ["./wait-for-db.sh", "db", "bash", "-c", "python manage.py migrate && gunicorn config.wsgi:application --bind 0.0.0.0:8002"]
+CMD ["/wait-for-db.sh"]
