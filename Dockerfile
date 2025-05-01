@@ -2,8 +2,9 @@ FROM python:3.11
 
 WORKDIR /code
 
+# Instala netcat y cliente PostgreSQL (para pg_isready)
 RUN apt-get update && \
-    apt-get install -y gcc libpq-dev netcat-openbsd && \
+    apt-get install -y netcat-openbsd postgresql-client && \
     apt-get clean
 
 COPY requirements.txt /code/
