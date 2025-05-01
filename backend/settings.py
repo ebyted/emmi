@@ -14,6 +14,7 @@ SECRET_KEY = 'django-insecure-5a+w^243txul^m+ucsj=j&)-s!j(jnlz#3-9^hjhv$u-xe$3n4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -66,6 +67,15 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'emmi_db',
+        'USER': 'ebyted',
+        'PASSWORD': 'arkano',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 

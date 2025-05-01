@@ -1,12 +1,5 @@
 from django.contrib import admin
-from django.urls import path, include
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('agenda.urls')),
-]
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from django.contrib.auth import views as auth_views
 from agenda import views as agenda_views
 
@@ -14,7 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # Rutas públicas para agendar
-    path('', agenda_views.index, name='index'),
+    path('', agenda_views.index, name='home'),  # 👈 CAMBIADO a 'home'
     path('barrasa/', agenda_views.barrasa, name='barrasa'),
     path('beauty/', agenda_views.beauty, name='beauty'),
     path('gracias/', agenda_views.gracias, name='gracias'),

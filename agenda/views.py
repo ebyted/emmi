@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import AgendaForm
 from collections import defaultdict
 from .models import Agenda
+from django.http import HttpResponse
 
 def index(request):
     return procesar_formulario(request, 'index.html')
@@ -27,6 +28,14 @@ def procesar_formulario(request, template):
             if template == 'index.html':
                 servicio = cita.servicio.lower()
                 if any(palabra in servicio for palabra in ['ceja', 'brow', 'microblading']):
+                    cita.origen = 'Emmi Brow Design'
+                else:
+                    cita.origen = 'Emmi Wellness Therapies'
+            else:
+                if template == 'barrasa.html':
+                    cita.origen = 'Emmi Brow Design'
+                elif template == 'beauty.html':
+                    cita.origen = 'Emmi Wellness Therapies'
 
             cita.save()
             return redirect('gracias')
@@ -43,3 +52,13 @@ def lista_citas(request):
     agendas = Agenda.objects.all().order_by('-fecha_creacion')
     citas_por_origen = defaultdict(list)
     for cita in agendas:
+        citas_por_origen[cita.origen].append(cita)
+    return render(request, 'lista_citas.html', {'citas_por_origen': dict(citas_por_origen)})
+
+def gracias(request):
+    return render(request, 'gracias.html')
+
+def eliminar_cita(request, cita_id):
+    cita = get_object_or_404(Agenda, id=cita_id)
+    cita.delete()
+    return redirect('lista_citas')
