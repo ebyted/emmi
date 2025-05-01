@@ -1,20 +1,4 @@
 services:
-  traefik:
-    image: traefik:v2.10
-    command:
-      - "--configFile=/etc/traefik/traefik.yml"
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - /etc/dokploy/traefik/sites/emmi/traefik.yml:/etc/traefik/traefik.yml
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /etc/dokploy/traefik/sites/emmi/letsencrypt:/letsencrypt
-    networks:
-      - default
-      - dokploy-network
-
-services:
   web:
     build: .
     container_name: emmi_web
