@@ -14,4 +14,7 @@ COPY . /code/
 COPY wait-for-db.sh /code/wait-for-db.sh
 RUN chmod +x /code/wait-for-db.sh
 
+RUN apt-get update && apt-get install -y postgresql-client
+
+
 CMD ["./wait-for-db.sh", "db", "bash", "-c", "python manage.py migrate && gunicorn config.wsgi:application --bind 0.0.0.0:8002"]
