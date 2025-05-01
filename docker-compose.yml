@@ -4,14 +4,31 @@ services:
   web:
     build: .
     container_name: emmi_web
-    command: bash -c "python manage.py migrate && gunicorn backend.wsgi:application --bind 0.0.0.0:8000"
     volumes:
-      - .:/code
-    working_dir: /code
+      - .:/app
+    working_dir: /app
     env_file:
       - .env
-    depends_on:
-      - db
+    networks:
+      - default
+      - dokploy-network
+    labels:
+      - "traefik.enable=true"
+
+      - "traefik.http.routers.emmi.rule=Host(`emmibrows.com`)"
+      - "traefik.http.routers.emmi.entrypoints=web"
+      - "traefik.http.routers.emmi.service=emmiservice"
+
+      - "traefik.http.routers.emmisecure.rule=Host(`emmibrows.com`)"
+      - "traefik.http.routers.emmisecure.entrypoints=websecure"
+      - "traefik.http.routers.emmisecure.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.emmisecure.service=emmiservice"
+
+      - "traefik.http.services.emmiservice.loadbalancer.server.port=8002"
+
+    command: >
+      bash -c "python manage.py migrate &&
+               gunicorn backend.wsgi:application --bind 0.0.0.0:8002"
 
   db:
     container_name: emmi_db
@@ -28,17 +45,14 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-
-  nginx:
-    image: nginx:latest
-    container_name: emmi_nginx
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./static:/static  # sirve archivos estáticos si los necesitas
-    depends_on:
-      - web
+    networks:
+      - default
 
 volumes:
   postgres_data:
+
+networks:
+  default:
+    driver: bridge
+  dokploy-network:
+    external: true
