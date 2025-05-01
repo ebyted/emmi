@@ -10,7 +10,7 @@ COPY requirements.txt /code/
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . /app/
+COPY . /code/
 COPY wait-for-db.sh /wait-for-db.sh
 RUN chmod +x /wait-for-db.sh
 
