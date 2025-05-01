@@ -1,7 +1,10 @@
 from pathlib import Path
 import os
+<<<<<<< HEAD
 from dotenv import load_dotenv
 load_dotenv()
+=======
+>>>>>>> development
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -16,7 +19,11 @@ SECRET_KEY = 'django-insecure-5a+w^243txul^m+ucsj=j&)-s!j(jnlz#3-9^hjhv$u-xe$3n4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = ['168.231.67.221', 'emmibrows.com', 'www.emmibrows.com']
+=======
+ALLOWED_HOSTS = []
+>>>>>>> development
 
 
 # Application definition
@@ -69,6 +76,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
+<<<<<<< HEAD
         'NAME': os.getenv('POSTGRES_DB'),
         'USER': os.getenv('POSTGRES_USER'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
@@ -80,6 +88,17 @@ DATABASES = {
     }
 }
 
+=======
+        'NAME': 'emmi_db',
+        'USER': 'ebyted',
+        'PASSWORD': 'arkano',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+
+>>>>>>> development
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
@@ -98,7 +117,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+<<<<<<< HEAD
 LOGIN_URL = '/login/'
+=======
+>>>>>>> development
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -126,5 +148,8 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+<<<<<<< HEAD
 # Redirección luego de login (opcional)
 LOGIN_REDIRECT_URL = '/citas/'  # Si quieres que vaya directo ahí después de iniciar sesión
+=======
+>>>>>>> development

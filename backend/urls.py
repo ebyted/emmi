@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
+<<<<<<< HEAD
 from django.contrib.auth import views as auth_views
 from agenda import views as agenda_views
 
@@ -20,3 +21,10 @@ urlpatterns = [
     path('citas/', agenda_views.lista_citas, name='lista_citas'),
     path('eliminar-cita/<int:cita_id>/', agenda_views.eliminar_cita, name='eliminar_cita'),
 ]
+=======
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('agenda.urls')),
+]
+>>>>>>> development

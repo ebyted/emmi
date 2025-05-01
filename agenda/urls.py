@@ -8,5 +8,8 @@ urlpatterns = [
     path('gracias/', views.gracias, name='gracias'),
     path('agendas/', views.lista_agendas, name='agendas'),
     path('citas/', views.lista_citas, name='lista_citas'),
+<<<<<<< HEAD
     path('eliminar-cita/<int:cita_id>/', views.eliminar_cita, name='eliminar_cita'),
+=======
+>>>>>>> development
 ]
