@@ -30,6 +30,7 @@ services:
 
   db:
     image: postgres:15
+    container_name: emmi_db
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
