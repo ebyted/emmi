@@ -13,8 +13,8 @@ COPY requirements.txt /code/
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copia del proyecto y del script de espera
-#COPY . /code/
-#COPY wait-for-db.sh /code/wait-for-db.sh
+COPY . /code/
+COPY wait-for-db.sh /code/wait-for-db.sh
 #RUN chmod +x /code/wait-for-db.sh
 
 # Comando por defecto para iniciar la app
