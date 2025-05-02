@@ -13,9 +13,9 @@ RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copia del proyecto y del script de espera
-COPY . /code/
-COPY wait-for-db.sh /code/wait-for-db.sh
-RUN chmod +x /code/wait-for-db.sh
+#COPY . /code/
+#COPY wait-for-db.sh /code/wait-for-db.sh
+#RUN chmod +x /code/wait-for-db.sh
 
 # Comando por defecto para iniciar la app
 #CMD ["sh", "-c", "./wait-for-db.sh db bash -c 'python manage.py migrate && gunicorn config.wsgi:application --bind 0.0.0.0:8002'"]
