@@ -1,4 +1,18 @@
 services:
+  traefik:
+    image: traefik:v2.10
+    command:
+      - "--configFile=/etc/traefik/traefik_emmi.yml"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/dokploy/traefik/sites/emmi/traefik.yml:/etc/traefik/traefik.yml
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/dokploy/traefik/sites/emmi/letsencrypt:/letsencrypt
+    networks:
+      - default
+      - dokploy-network
   web:
     build: .
     container_name: emmi_web
@@ -7,13 +21,15 @@ services:
        python manage.py migrate &&
        gunicorn config.wsgi:application --bind 0.0.0.0:8002
     volumes:
-      - .:/app
-    working_dir: /app
+      - .:/code
+    working_dir: /code
     env_file:
       - .env
+    depends_on:
+      - db
     networks:
-      - default
-      - dokploy-network
+     - default
+     - dokploy-network
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.emmi.rule=Host(`emmibrows.com`)"
@@ -39,7 +55,7 @@ services:
       - dokploy-network
 
 volumes:
-  postgres_data:
+  postgres_emmi_data:
 
 networks:
   dokploy-network:

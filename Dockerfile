@@ -2,6 +2,7 @@ FROM python:3.11
 
 WORKDIR /app
 
+# Instalación de dependencias del sistema
 RUN apt-get update && \
     apt-get install -y gcc libpq-dev netcat postgresql-client && \
     apt-get clean
