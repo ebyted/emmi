@@ -2,10 +2,10 @@ services:
   web:
     build: .
     container_name: emmi_web
-    command:  until nc -z db 5432; do echo '⏳ Esperando a DB...'; sleep 1; done;
-      echo '✅ DB lista';
-      python manage.py migrate &&
-      gunicorn config.wsgi:application --bind 0.0.0.0:8002"
+command: bash -c "
+  ./wait-for-it.sh db:5432 -- echo '✅ DB lista' &&
+  python manage.py migrate &&
+  gunicorn config.wsgi:application --bind 0.0.0.0:8002"
     volumes:
       - .:/app
     working_dir: /app
