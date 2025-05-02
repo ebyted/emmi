@@ -13,23 +13,24 @@ services:
     networks:
       - default
       - dokploy-network
+
   web:
     build: .
     container_name: emmi_web
     command: >
-      ./wait-for-db.sh db &&
-       python manage.py migrate &&
-       gunicorn config.wsgi:application --bind 0.0.0.0:8002
+      /scripts/wait-for-db.sh db &&
+      python manage.py migrate &&
+      gunicorn config.wsgi:application --bind 0.0.0.0:8002
     volumes:
-      - .:/code
-    working_dir: /code
+      - .:/app
+    working_dir: /app
     env_file:
       - .env
     depends_on:
       - db
     networks:
-     - default
-     - dokploy-network
+      - default
+      - dokploy-network
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.emmi.rule=Host(`emmibrows.com`)"
@@ -45,7 +46,7 @@ services:
     image: postgres:15
     container_name: emmi_db
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - postgres_emmi_data:/var/lib/postgresql/data/
     environment:
       - POSTGRES_DB=emmi_db
       - POSTGRES_USER=ebyted
