@@ -8,9 +8,9 @@ RUN apt-get update && \
     apt-get clean
 
 # Copia e instalación de dependencias de Python
-#COPY requirements.txt /code/
+COPY requirements.txt /code/
 #RUN pip install --upgrade pip
-#RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copia del proyecto y del script de espera
 #COPY . /code/
