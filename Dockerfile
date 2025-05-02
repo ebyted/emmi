@@ -19,5 +19,5 @@ RUN chmod +x /code/wait-for-db.sh
 
 # Comando por defecto para iniciar la app
 
-#CMD [ "python manage.py migrate && gunicorn config.wsgi:application --bind 0.0.0.0:8002"]
-CMD ["./wait-for-db.sh", "db", "bash", "-c", "python manage.py migrate && gunicorn config.wsgi:application --bind 0.0.0.0:8002"]
+CMD [ "python manage.py migrate && gunicorn config.wsgi:application --bind 0.0.0.0:8002"]
+#CMD ["./wait-for-db.sh", "db", "bash", "-c", "python manage.py migrate && gunicorn config.wsgi:application --bind 0.0.0.0:8002"]
