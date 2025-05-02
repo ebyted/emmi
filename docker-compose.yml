@@ -2,18 +2,23 @@ services:
   web:
     build: .
     container_name: emmi_web
-    command: bash -c "/code/wait-for-it.sh db:5432 --timeout=60 --strict -- python manage.py migrate && gunicorn config.wsgi:application --bind 0.0.0.0:8002"
-
+    command: bash -c "
+      until nc -z db 5432; do echo '⏳ Esperando a DB...'; sleep 1; done;
+      echo '✅ DB lista';
+      python manage.py migrate &&
+      gunicorn config.wsgi:application --bind 0.0.0.0:8002"
     volumes:
       - .:/code
     working_dir: /code
     env_file:
       - .env
+    depends_on:
+      - db
     networks:
-      - default
-      - dokploy-network
+     - default
+     - dokploy-network
     labels:
-      - "traefik.enable=true"
+      - traefik.enable=true
 
       - "traefik.http.routers.emmi.rule=Host(`emmibrows.com`)"
       - "traefik.http.routers.emmi.entrypoints=web"
