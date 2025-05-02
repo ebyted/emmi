@@ -1,18 +1,14 @@
 #!/bin/sh
 
-# Espera a que la base de datos esté disponible
-if [ -z "$1" ]; then
-  echo "Usage: $0 <host> <command>"
-  exit 1
-fi
+# Espera a que Postgres esté listo con pg_isready
+echo "Esperando a la base de datos en $1:5432..."
 
-HOST="$1"
-shift
-
-until pg_isready -h "$HOST" -p 5432; do
-  echo "Postgres is unavailable - sleeping"
+until pg_isready -h "$1" -p 5432; do
+  echo "⏳ Esperando a DB..."
   sleep 1
 done
 
-echo "Postgres is up - executing command"
+echo "✅ DB lista. Ejecutando comandos..."
+
+shift
 exec "$@"
