@@ -2,7 +2,7 @@ services:
   traefik:
     image: traefik:v2.10
     command:
-      - "--configFile=/etc/traefik/traefik.yml"
+      - "--configFile=/etc/traefik/traefik_emmi.yml"
     ports:
       - "80:80"
       - "443:443"
