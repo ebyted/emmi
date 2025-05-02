@@ -32,7 +32,7 @@ services:
     image: postgres:15
     container_name: emmi_db
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - postgres_emmi_data:/var/lib/postgresql/data/
     environment:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
@@ -43,7 +43,7 @@ services:
      - dokploy-network
 
 volumes:
-  postgres_data:
+  postgres_emmi_data:
 
 networks:
   default:
