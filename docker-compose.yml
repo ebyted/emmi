@@ -20,16 +20,16 @@ services:
     labels:
       - traefik.enable=true
 
-      - "traefik.http.routers.emmi.rule=Host(`emmibrows.com`)"
-      - "traefik.http.routers.emmi.entrypoints=web"
-      - "traefik.http.routers.emmi.service=emmiservice"
+      - traefik.http.routers.emmi.rule=Host(`emmibrows.com`)
+      - traefik.http.routers.emmi.entrypoints=web
+      - traefik.http.routers.emmi.service=emmiservice
 
-      - "traefik.http.routers.emmisecure.rule=Host(`emmibrows.com`)"
-      - "traefik.http.routers.emmisecure.entrypoints=websecure"
-      - "traefik.http.routers.emmisecure.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.emmisecure.service=emmiservice"
+      - traefik.http.routers.emmisecure.rule=Host(`emmibrows.com`)
+      - traefik.http.routers.emmisecure.entrypoints=websecure
+      - traefik.http.routers.emmisecure.tls.certresolver=letsencrypt
+      - traefik.http.routers.emmisecure.service=emmiservice
 
-      - "traefik.http.services.emmiservice.loadbalancer.server.port=8002"
+      - traefik.http.services.emmiservice.loadbalancer.server.port=8002
 
   db:
     image: postgres:15
