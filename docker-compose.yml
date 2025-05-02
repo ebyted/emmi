@@ -32,7 +32,6 @@ services:
     volumes:
       - postgres_emmi_data:/var/lib/postgresql/data/
     environment:
-      environment:
       - POSTGRES_DB=emmi_db
       - POSTGRES_USER=ebyted
       - POSTGRES_PASSWORD=arkano
