@@ -2,13 +2,11 @@ services:
   web:
     build: .
     container_name: emmi_web
-command: bash -c "
-  ./wait-for-it.sh db:5432 -- echo '✅ DB lista' &&
-  python manage.py migrate &&
-  gunicorn config.wsgi:application --bind 0.0.0.0:8002"
+    command: bash -c "/code/wait-for-it.sh db:5432 --timeout=60 --strict -- python manage.py migrate && gunicorn config.wsgi:application --bind 0.0.0.0:8002"
+
     volumes:
-      - .:/app
-    working_dir: /app
+      - .:/code
+    working_dir: /code
     env_file:
       - .env
     networks:
