@@ -4,8 +4,7 @@ services:
     command:
       - "--configFile=/etc/traefik/traefik_emmi.yml"
     ports:
-      - "80:80"
-      - "443:443"
+      - "8002:8000"
     volumes:
       - /etc/dokploy/traefik/sites/emmi/traefik.yml:/etc/traefik/traefik.yml
       - /var/run/docker.sock:/var/run/docker.sock
