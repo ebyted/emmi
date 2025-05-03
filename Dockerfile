@@ -6,4 +6,4 @@ COPY . .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["gunicorn", "emmi.wsgi:application", "--bind", "0.0.0.0:8002"]
+CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8002"]
