@@ -11,7 +11,7 @@ services:
 
   db:
     image: postgres:15
-    container_name: emmi_db
+    container_name: emmi_db_v2
     volumes:
       - postgres_emmi_data:/var/lib/postgresql/data/
     networks:
