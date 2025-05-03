@@ -27,6 +27,8 @@ services:
       - .env
     depends_on:
       - db
+    ports:
+      - "8002:8002"
     networks:
       - default
       - dokploy-network
