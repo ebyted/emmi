@@ -1,3 +1,5 @@
+version: '3.9'
+
 services:
   traefik:
     image: traefik:v2.10
@@ -12,17 +14,16 @@ services:
     networks:
       - default
       - dokploy-network
+    restart: always
 
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: emmi_web
-    command: bash -c "
-      ./wait-for-db.sh db &&
-      python manage.py migrate &&
-      gunicorn backend.wsgi:application --bind 0.0.0.0:8002"
+    working_dir: /app
     volumes:
       - .:/app
-    working_dir: /app
     env_file:
       - .env
     depends_on:
@@ -32,6 +33,10 @@ services:
     networks:
       - default
       - dokploy-network
+    command: bash -c "
+      ./wait-for-db.sh db &&
+      python manage.py migrate &&
+      gunicorn backend.wsgi:application --bind 0.0.0.0:8002"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.emmi.rule=Host(`emmibrows.com`)"
@@ -42,19 +47,21 @@ services:
       - "traefik.http.routers.emmisecure.tls.certresolver=letsencrypt"
       - "traefik.http.routers.emmisecure.service=emmiservice"
       - "traefik.http.services.emmiservice.loadbalancer.server.port=8002"
+    restart: always
 
   db:
     image: postgres:15
     container_name: emmi_db
+    environment:
+      POSTGRES_DB: emmi_db
+      POSTGRES_USER: ebyted
+      POSTGRES_PASSWORD: arkano
     volumes:
       - postgres_emmi_data:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_DB=emmi_db
-      - POSTGRES_USER=ebyted
-      - POSTGRES_PASSWORD=arkano
     networks:
       - default
       - dokploy-network
+    restart: always
 
 volumes:
   postgres_emmi_data:
