@@ -21,3 +21,6 @@ services:
       POSTGRES_DB: emmi_db
       POSTGRES_USER: ebyted
       POSTGRES_PASSWORD: arkano
+
+volumes:
+  postgres_emmi_data:
