@@ -16,7 +16,6 @@ services:
       - postgres_emmi_data:/var/lib/postgresql/data/
     networks:
       - default
-      - dokploy-network
     restart: always
     environment:
       POSTGRES_DB: emmi_db
