@@ -13,7 +13,7 @@ RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copiar el script de espera y darle permisos
-COPY wait-for-db.sh /scripts/wait-for-db.sh
+COPY wait-for-db.sh /app/wait-for-db.sh
 RUN chmod +x /scripts/wait-for-db.sh
 
 # Copiar el resto del código de la app

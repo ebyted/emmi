@@ -19,7 +19,7 @@ services:
     command: bash -c "
       ./wait-for-db.sh db &&
       python manage.py migrate &&
-      gunicorn config.wsgi:application --bind 0.0.0.0:8002"
+      gunicorn backend.wsgi:application --bind 0.0.0.0:8002"
     volumes:
       - .:/app
     working_dir: /app
