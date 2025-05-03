@@ -12,9 +12,12 @@ COPY requirements.txt /app/
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar el script a una ruta que no se monte
+# Copiar el script de espera y darle permisos
 COPY wait-for-db.sh /scripts/wait-for-db.sh
 RUN chmod +x /scripts/wait-for-db.sh
 
 # Copiar el resto del código de la app
 COPY . /app/
+
+# Comando final: esperar a la DB, migrar y correr Gunicorn
+CMD ["bash", "-c", "./scripts/wait-for-db.sh db && python manage.py migrate && gunicorn backend.wsgi:application --bind 0.0.0.0:8002"]
