@@ -8,6 +8,8 @@ services:
       - .env
     depends_on:
       - db
+    volumes:
+      - ./staticfiles:/app/staticfiles  # <-- Aquí se monta la carpeta generada por collectstatic
 
   db:
     image: postgres:15
