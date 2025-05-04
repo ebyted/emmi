@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'agenda',
     'django_apscheduler',
+    'galeria',
 ]
 
 MIDDLEWARE = [
