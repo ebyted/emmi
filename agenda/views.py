@@ -62,3 +62,8 @@ def eliminar_cita(request, cita_id):
     cita = get_object_or_404(Agenda, id=cita_id)
     cita.delete()
     return redirect('lista_citas')
+
+def galeria(request, galeria_id):
+    # Aquí puedes implementar la lógica para mostrar la galería
+    # Por ejemplo, podrías cargar imágenes desde un modelo o una carpeta específica
+    return render(request, 'galeria.html')
