@@ -19,7 +19,7 @@ environ.Env.read_env(BASE_DIR / ".env")
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-5a+w^243txul^m+ucsj=j&)-s!j(jnlz#3-9^hjhv$u-xe$3n4'
 
-ALLOWED_HOSTS = ['168.231.74.214', 'emmibrows.com', 'www.emmibrows.com', 'localhost']
+ALLOWED_HOSTS = ['168.231.74.214', 'emmibrows.com', 'www.emmibrows.com', 'localhost', '*']
 
 
 # Application definition
@@ -78,7 +78,7 @@ DATABASES = {
         'NAME': env('POSTGRES_DB'),
         'USER': env('POSTGRES_USER'),
         'PASSWORD': env('POSTGRES_PASSWORD'),
-        'HOST': 'db',
+        'HOST': env('POSTGRES_HOST'),
         'PORT': env('POSTGRES_PORT'),
     }
 }
