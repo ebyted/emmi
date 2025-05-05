@@ -19,5 +19,5 @@ urlpatterns = [
     # Vista protegida
     path('citas/', agenda_views.lista_citas, name='lista_citas'),
     path('eliminar-cita/<int:cita_id>/', agenda_views.eliminar_cita, name='eliminar_cita'),
-    path('galeria/', agenda_views.galeria, name='galeria'),
+    path('galeria/', include('galeria.urls')),
 ]

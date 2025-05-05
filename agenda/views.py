@@ -66,4 +66,4 @@ def eliminar_cita(request, cita_id):
 def galeria(request, galeria_id):
     # Aquí puedes implementar la lógica para mostrar la galería
     # Por ejemplo, podrías cargar imágenes desde un modelo o una carpeta específica
-    return render(request, 'galeria.html')
+    return render(request, 'indexgaleria.html')
