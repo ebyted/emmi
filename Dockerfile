@@ -2,22 +2,11 @@ FROM python:3.11
 
 WORKDIR /app
 
-# Instalación de dependencias del sistema
-RUN apt-get update && \
-    apt-get install -y gcc libpq-dev netcat postgresql-client && \
-    apt-get clean
+COPY . .
 
-# Instalar dependencias de Python
-COPY requirements.txt /app/
-RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar el script de espera y darle permisos
-COPY wait-for-db.sh /app/wait-for-db.sh
-RUN chmod +x /scripts/wait-for-db.sh
+RUN python manage.py collectstatic --noinput
 
-# Copiar el resto del código de la app
-COPY . /app/
 
-# Comando final: esperar a la DB, migrar y correr Gunicorn
-CMD ["bash", "-c", "./scripts/wait-for-db.sh db && python manage.py migrate && gunicorn backend.wsgi:application --bind 0.0.0.0:8002"]
+CMD ["gunicorn", "backend.wsgi:application", "--bind", "0.0.0.0:8002"]

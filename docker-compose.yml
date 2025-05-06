@@ -1,69 +1,28 @@
-services:
-  traefik:
-    image: traefik:v2.10
-    command:
-      - "--configFile=/etc/traefik/traefik_emmi.yml"
-    ports:
-      - "8002:8000"
-    volumes:
-      - /etc/dokploy/traefik/sites/emmi/traefik.yml:/etc/traefik/traefik.yml
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /etc/dokploy/traefik/sites/emmi/letsencrypt:/letsencrypt
-    networks:
-      - default
-      - dokploy-network
-    restart: always
 
-  web: 
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: emmi_web
-    working_dir: /app
-    volumes:
-      - .:/app
+services:
+  web:
+    build: .
+    ports:
+      - "8002:8002"
     env_file:
       - .env
     depends_on:
       - db
-    ports:
-      - "8002:8002"
-    networks:
-      - default
-      - dokploy-network
-    command: bash -c "
-      ./wait-for-db.sh db &&
-      python manage.py migrate &&
-      exec gunicorn backend.wsgi:application --bind 0.0.0.0:8002"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.emmi.rule=Host(`emmibrows.com`)"
-      - "traefik.http.routers.emmi.entrypoints=web"
-      - "traefik.http.routers.emmi.service=emmiservice"
-      - "traefik.http.routers.emmisecure.rule=Host(`emmibrows.com`)"
-      - "traefik.http.routers.emmisecure.entrypoints=websecure"
-      - "traefik.http.routers.emmisecure.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.emmisecure.service=emmiservice"
-      - "traefik.http.services.emmiservice.loadbalancer.server.port=8002"
-    restart: always
+    volumes:
+      - ./staticfiles:/app/staticfiles  # <-- Aquí se monta la carpeta generada por collectstatic
 
   db:
     image: postgres:15
-    container_name: emmi_db
-    environment:
-      POSTGRES_DB: emmi_db
-      POSTGRES_USER: ebyted
-      POSTGRES_PASSWORD: arkano
+    container_name: emmi_db_v2
     volumes:
       - postgres_emmi_data:/var/lib/postgresql/data/
     networks:
       - default
-      - dokploy-network
     restart: always
+    environment:
+      POSTGRES_DB: emmi_db
+      POSTGRES_USER: ebyted
+      POSTGRES_PASSWORD: arkano
 
 volumes:
-  postgres_emmi_data:
-
-networks:
-  dokploy-network:
-    external: true
+  postgres_emmi_data: 
