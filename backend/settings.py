@@ -25,7 +25,11 @@ ALLOWED_HOSTS = ['168.231.74.214', 'emmibrows.com', 'www.emmibrows.com', 'localh
 
 CSRF_TRUSTED_ORIGINS = [
     "https://emmibrows.com",
-    "https://www.emmibrows.com"
+    "https://www.emmibrows.com",
+    "http://emmibrows.com",
+    "http://www.emmibrows.com",
+    "https://168.231.74.214",
+    "http://168.231.74.214"
 ]
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
