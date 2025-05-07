@@ -24,25 +24,35 @@ def procesar_formulario(request, template):
         if form.is_valid():
             cita = form.save(commit=False)
 
-            # Lógica para asignar origen desde la página principal (index.html)
             if template == 'index.html':
                 servicio = cita.servicio.lower()
                 if any(palabra in servicio for palabra in ['ceja', 'brow', 'microblading']):
                     cita.origen = 'Emmi Brow Design'
                 else:
                     cita.origen = 'Emmi Wellness Therapies'
-            else:
-                if template == 'barrasa.html':
-                    cita.origen = 'Emmi Brow Design'
-                elif template == 'beauty.html':
-                    cita.origen = 'Emmi Wellness Therapies'
+            elif template == 'barrasa.html':
+                cita.origen = 'Emmi Brow Design'
+            elif template == 'beauty.html':
+                cita.origen = 'Emmi Wellness Therapies'
 
             cita.save()
             return redirect('gracias')
     else:
         form = AgendaForm(initial=initial_data)
 
-    return render(request, template, {'form': form})
+    context = {'form': form}
+
+    # ✅ Solo para barrasa.html, incluir galería de Nosotros
+    if template == 'barrasa.html':
+        nosotros_path = os.path.join(settings.MEDIA_ROOT, 'Nosotros')
+        imagenes_nosotros = []
+        if os.path.exists(nosotros_path):
+            for archivo in os.listdir(nosotros_path):
+                if archivo.lower().endswith(('.jpg', '.jpeg', '.png', '.gif', '.webp')):
+                    imagenes_nosotros.append(f'{settings.MEDIA_URL}Nosotros/{archivo}')
+        context['imagenes_nosotros'] = imagenes_nosotros
+
+    return render(request, template, context)
 
 def lista_agendas(request):
     agendas = Agenda.objects.all().order_by('-fecha_creacion')

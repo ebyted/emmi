@@ -23,6 +23,13 @@ SECRET_KEY = 'django-insecure-5a+w^243txul^m+ucsj=j&)-s!j(jnlz#3-9^hjhv$u-xe$3n4
 
 ALLOWED_HOSTS = ['168.231.74.214', 'emmibrows.com', 'www.emmibrows.com', 'localhost', '*']
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://emmibrows.com",
+    "https://www.emmibrows.com"
+]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+USE_X_FORWARDED_HOST = True
 
 # Application definition
 
