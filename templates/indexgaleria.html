@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galería - Emmi Brows</title>
+
+  <!-- Tailwind, Apex, FontAwesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+
+  <!-- Tipografía -->
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <!-- Configuración de Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Work Sans"', 'sans-serif'],
+          },
+          colors: {
+            emmi: '#e69b4c',
+            lavanda: '#E6E6FA',
+            malva: '#9B8BB4',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * {
+      font-family: 'Work Sans', sans-serif;
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+
+<body class="h-full text-base-content" style="background-color: var(--color-lavanda);">
+  <div class="min-h-screen">
+
+    <!-- HEADER COMPATIBLE CON TU SITIO -->
+    <header class="py-6 px-8 bg-white/80 backdrop-blur-sm">
+      <div class="container mx-auto flex items-center justify-between">
+        <a href="{% url 'home' %}" class="flex items-center gap-3">
+          <img src="{% static 'images/logo_emmi2.png' %}" alt="Emmi Logo" class="h-20 w-auto">
+        </a>
+        <nav class="flex gap-6">
+          <a href="{% url 'home' %}#booking" class="text-gray-600 hover:text-[#FFB6C1]">Inicio</a>
+          <a href="{% url 'home' %}#contacto" class="text-gray-600 hover:text-[#FFB6C1]">Contacto</a>
+          <a href="{% url 'home' %}#booking" class="text-gray-600 hover:text-[#FFB6C1]">Reservar</a>
+          <a href="{% url 'galeria' %}" class="text-gray-600 hover:text-[#FFB6C1] font-semibold">Galería</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- GALERÍA -->
+    <main class="container mx-auto px-6 py-12">
+      <h2 class="text-4xl font-bold text-center text-emmi mb-6">Nuestro Trabajo</h2>
+      <p class="text-lg text-center text-gray-600 mb-12 max-w-2xl mx-auto">Una mirada a la dedicación y detalle que ponemos en cada servicio.</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {% for img in imagenes %}
+        <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
+          <img src="{{ img }}" alt="Imagen de galería" class="w-full h-64 object-cover object-center">
+        </div>
+        {% empty %}
+        <p class="col-span-3 text-center text-gray-500">Aún no hay imágenes disponibles.</p>
+        {% endfor %}
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white/80 backdrop-blur-sm mt-20 py-8">
+      <div class="container mx-auto px-8 flex items-center justify-between">
+        <a href="{% url 'home' %}" class="flex items-center gap-3">
+          <img src="{% static 'images/logo_emmi2.png' %}" alt="Emmi Logo" class="h-16 w-auto">
+        </a>
+        <div class="flex gap-4">
+          <a href="#" class="text-gray-600 hover:text-[#FFB6C1]"><i class="fa-brands fa-instagram text-xl"></i></a>
+          <a href="#" class="text-gray-600 hover:text-[#FFB6C1]"><i class="fa-brands fa-facebook text-xl"></i></a>
+          <a href="#" class="text-gray-600 hover:text-[#FFB6C1]"><i class="fa-brands fa-whatsapp text-xl"></i></a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>

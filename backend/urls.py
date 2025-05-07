@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from agenda import views as agenda_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -20,4 +22,12 @@ urlpatterns = [
     path('citas/', agenda_views.lista_citas, name='lista_citas'),
     path('eliminar-cita/<int:cita_id>/', agenda_views.eliminar_cita, name='eliminar_cita'),
     path('galeria/', include('galeria.urls')),
+
+    
+    # Galería (con su propia app)
+    path('galeria/', include('galeria.urls')),
 ]
+
+# 👇 Agrega esto JUSTO AQUÍ, fuera de urlpatterns, pero en el mismo archivo
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
