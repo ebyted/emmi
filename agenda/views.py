@@ -3,6 +3,7 @@ from .forms import AgendaForm
 from collections import defaultdict
 from .models import Agenda
 from django.http import HttpResponse
+from django.conf import settings
 import os
 
 def index(request):
